@@ -1,7 +1,7 @@
 using BusBoard;
 namespace BusBoard{
     class BusBoardUtility{
-        public static List<ArrivalPredictions> sortList(List<ArrivalPredictions> arrivalList,string sortParam){
+        public static List<ArrivalPredictions> SortList(List<ArrivalPredictions> arrivalList,string sortParam){
             if(sortParam == "Arrivals"){
                 arrivalList.Sort((a,b) =>  a.timeToStation - b.timeToStation);
             }

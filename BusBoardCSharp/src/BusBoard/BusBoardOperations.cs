@@ -15,7 +15,7 @@ namespace BusBoard{
 
         private List<ArrivalPredictions> SortAndFilterList(List<ArrivalPredictions>arrivalPredictions){
             int displayRange = arrivalPredictions.Count > 5 ? 5:arrivalPredictions.Count;
-            return BusBoardUtility.sortList(arrivalPredictions,"Arrivals").GetRange(0,displayRange);
+            return BusBoardUtility.SortList(arrivalPredictions,"Arrivals").GetRange(0,displayRange);
         } 
     }
 }

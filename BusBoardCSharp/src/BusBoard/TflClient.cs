@@ -8,9 +8,8 @@ namespace BusBoard{
          static string app_key = new EnvironmentVariableSetUp().GetAPIKey();
         
         public static async Task<List<ArrivalPredictions>> GetLiveArrivalPredictions(){
-            Console.WriteLine("Enter the bus stop code:");//490008660N
+            Console.WriteLine("Enter the bus stop code:");
             var busStopId = Console.ReadLine();
-            Console.WriteLine("api_key is "+app_key);
             var request = new RestRequest(busStopId+"/Arrivals").AddQueryParameter("api_key",app_key);
             var response = await stopPointClient.GetAsync<List<ArrivalPredictions>>(request);
             if (response == null) {
