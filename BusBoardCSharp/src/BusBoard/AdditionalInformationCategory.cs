@@ -3,8 +3,4 @@ namespace BusBoard{
         public required string category { get; set; }
         public required List<string> availableKeys { get; set; }
     }
-}
-
-
-
-      
+}      
