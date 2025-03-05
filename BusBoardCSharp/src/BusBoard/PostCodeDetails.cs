@@ -4,7 +4,7 @@ namespace BusBoard{
         public required double longitude { get; set; }
         public required double latitude { get; set; }       
     }
-     class PostCodeDetails {
+    class PostCodeDetails {
         public required PostCodeCoordinates result { get; set; }
     }
 }

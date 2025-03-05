@@ -1,18 +1,14 @@
 using RestSharp;
 using BusBoardCSharp;
 using Microsoft.Extensions.Configuration;
-
 namespace BusBoard{
     class TflClient{
         private static readonly string restClientURL =  "https://api.tfl.gov.uk/StopPoint"; 
         private static readonly RestClient stopPointClient = new RestClient(new RestClientOptions(restClientURL));
         private static readonly string restClientURLForPostCode = "http://api.postcodes.io/postcodes/";
         private static readonly RestClient postCodeClient = new RestClient(new RestClientOptions(restClientURLForPostCode));
-        private static readonly string ApiKey = new AppSettings().ApiKey;
-        
-        
+        private static readonly string ApiKey = new AppSettings().ApiKey;            
         public static async Task<List<ArrivalPredictions>> GetLiveArrivalPredictions(String stopPointId){
-           // Console.WriteLine(ApiKey);
             var request = new RestRequest(stopPointId+"/Arrivals").AddQueryParameter("api_key",ApiKey);
             var response = await stopPointClient.GetAsync<List<ArrivalPredictions>>(request);
             if (response == null) {
@@ -20,8 +16,6 @@ namespace BusBoard{
             }
             return response;
         }
-
-
         public static async Task <PostCodeDetails> GetCoordinates(){
             Console.WriteLine("Enter a post code ");
             var postCode = Console.ReadLine();
@@ -32,10 +26,7 @@ namespace BusBoard{
             }
             return response; 
         }
-
-
         public static async Task<StopPointResult> GetStopPoints(double latitude,double longitude,string stopTypes){
-            
             var parameters = new {
                 lat = latitude,
                 lon = longitude,

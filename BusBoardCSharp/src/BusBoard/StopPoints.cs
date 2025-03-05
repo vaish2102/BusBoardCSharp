@@ -1,12 +1,11 @@
 using RestSharp;
-
 namespace BusBoard{
-    public class StopPointList{
+    public class StopPoints{
         public required string id { get; set; }
-        public double distance { get; set; }
+        public required double distance { get; set; }
+        public required string commonName{get;set;}
     }
-
     public class StopPointResult{
-        public required List <StopPointList> stopPoints{get;set;}
+        public required List <StopPoints> stopPoints{get;set;}
     }
 }
