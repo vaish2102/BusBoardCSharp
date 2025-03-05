@@ -5,11 +5,10 @@ namespace BusBoard{
             arrivalList.Sort((a,b) =>  a.timeToStation - b.timeToStation);
             return arrivalList;
         }
-         /*public static List<StopPointList> sortStopPointsList(List<StopPointList> stopPointList){}
-                stopPointList.Sort((a,b) =>  a.distance - b.distance);
+         public static List<StopPointList> SortStopPointsList(List<StopPointList> stopPointList){
+            stopPointList.Sort((a,b) => Convert.ToInt32(a.distance)  - Convert.ToInt32(b.distance));
             return stopPointList;
-
-        }*/
+        }
 
         public static double TimeInMinutes(int timeToStation){
             return Math.Floor((double)timeToStation / 60);
