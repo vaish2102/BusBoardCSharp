@@ -1,5 +1,6 @@
 using RestSharp;
 using BusBoardCSharp;
+using Microsoft.Extensions.Configuration;
 
 namespace BusBoard{
     class TflClient{
@@ -7,10 +8,12 @@ namespace BusBoard{
         private static readonly RestClient stopPointClient = new RestClient(new RestClientOptions(restClientURL));
         private static readonly string restClientURLForPostCode = "http://api.postcodes.io/postcodes/";
         private static readonly RestClient postCodeClient = new RestClient(new RestClientOptions(restClientURLForPostCode));
-        private static readonly string api_Key = new AppSettings().GetAPIKey();
+        private static readonly string ApiKey = new AppSettings().ApiKey;
+        
         
         public static async Task<List<ArrivalPredictions>> GetLiveArrivalPredictions(String stopPointId){
-            var request = new RestRequest(stopPointId+"/Arrivals").AddQueryParameter("api_key",api_Key);
+           // Console.WriteLine(ApiKey);
+            var request = new RestRequest(stopPointId+"/Arrivals").AddQueryParameter("api_key",ApiKey);
             var response = await stopPointClient.GetAsync<List<ArrivalPredictions>>(request);
             if (response == null) {
                 throw new Exception("Error occuring while fetching arrival predictions");
